@@ -7,7 +7,10 @@ Try running some of the following tasks:
 ```shell
 npx hardhat help
 npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+
 ```
+If your tests are passing the owner address of good contract was indeed changed, since we equate the value of the ```owner``` variable in ```Good``` to the address of the ```Attack``` contract at the end of the test.
+
+# How we can prevent this
+
+Use stateless library contracts which means that the contracts to which you delegate the call should only be used for execution of logic and should not maintain state. This way, it is not possible for functions in the library to modify the state of the calling contract.
